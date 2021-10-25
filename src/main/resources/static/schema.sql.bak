@@ -1,0 +1,52 @@
+ drop table if exists Department CASCADE;
+ drop table if exists Employee CASCADE;
+
+ drop sequence if exists hibernate_sequence;
+ create sequence hibernate_sequence start with 1 increment by 1;
+
+ create table Department (
+       id bigint not null,
+        name varchar(255),
+        primary key (id)
+    );
+    create table Employee (
+       id bigint not null,
+        birth_date date,
+        first_name varchar(255),
+        gender varchar(255),
+        hire_date date,
+        last_name varchar(255),
+        department_id bigint,
+        primary key (id)
+    ) ;
+
+     alter table Employee
+           add constraint FK14tijxqry9ml17nk86sqfp561
+           foreign key (department_id)
+           references Department ;
+
+
+
+--INSERT INTO DEPARTMENT(id,name) VALUES(200,'HR');
+--INSERT INTO DEPARTMENT(id,name) VALUES(201,'PDE');
+--INSERT INTO DEPARTMENT(id,name) VALUES(202,'Marketing');
+
+
+
+--INSERT INTO EMPLOYEE(id,first_name,last_name,gender,birth_date,hire_date,department_id) VALUES(nextval('hibernate_sequence'),'Alex','Bonilla','M','1990-12-07','2011-04-01',null);
+--INSERT INTO EMPLOYEE(id,first_name,last_name,gender,birth_date,hire_date,department_id) VALUES(nextval('hibernate_sequence'),'Duke','Stacey','M','1989-07-11','2012-08-21',100);
+--INSERT INTO EMPLOYEE(id,first_name,last_name,gender,birth_date,hire_date,department_id) VALUES(nextval('hibernate_sequence'),'Hayley','Drake','M','1992-10-01','2007-07-06',101);
+--INSERT INTO EMPLOYEE(id,first_name,last_name,gender,birth_date,hire_date,department_id) VALUES(nextval('hibernate_sequence'),'Nancie','Beasley','M','1978-02-21','2003-03-03',101);
+--INSERT INTO EMPLOYEE(id,first_name,last_name,gender,birth_date,hire_date,department_id) VALUES(nextval('hibernate_sequence'),'Wyatt','Holder','M','1994-12-01','2016-02-15',101);
+--INSERT INTO EMPLOYEE(id,first_name,last_name,gender,birth_date,hire_date,department_id) VALUES(nextval('hibernate_sequence'),'Tobey','Drake','M','1992-10-01','2014-06-11',102);
+--INSERT INTO EMPLOYEE(id,first_name,last_name,gender,birth_date,hire_date,department_id) VALUES(nextval('hibernate_sequence'),'Marvin','Hope','M','1978-02-21','2003-09-10',102);
+--INSERT INTO EMPLOYEE(id,first_name,last_name,gender,birth_date,hire_date,department_id) VALUES(nextval('hibernate_sequence'),'Ibrar','Garcia','M','1994-12-01','2004-12-21',102);
+--
+--
+--
+--
+--
+--
+
+COMMIT;
+

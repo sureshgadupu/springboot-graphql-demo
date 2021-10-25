@@ -1,0 +1,53 @@
+type Employee {
+	id:Int!
+	first_name: String!
+	last_name: String!
+	gender: Gender
+	birth_date: Date
+	hire_date: Date
+    department: Department
+}
+
+type Department {
+  id : Int!
+  name : String!
+  employees:[Employee!]
+}
+
+enum Gender {
+ M
+ F
+}
+
+scalar Date
+
+input SubmittedEmployee {
+	first_name: String!
+	last_name: String!
+	gender: Gender
+	birth_date: Date
+	hire_date: Date
+	deptId:Int!
+}
+
+input SubmittedDepartment {
+    name : String!
+}
+
+type Query {
+
+   employee(id : Int) : Employee
+   employees :[Employee!]
+   departments :[Department!]
+   getEmployeesByDeptId(deptId : Int) :[Employee!]
+}
+
+type Mutation {
+  createDepartment(department : SubmittedDepartment) :Department
+  createEmployee(employee : SubmittedEmployee) : Employee
+  updateEmpDepartment(emp_id: Int! , dept_id : Int!) : Boolean
+}
+
+type Subscription {
+   notifyEmployeeCreation : Employee
+}
